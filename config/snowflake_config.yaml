@@ -1,0 +1,7 @@
+user: "YOUR_SNOWFLAKE_USER"
+password: "YOUR_SNOWFLAKE_PASSWORD"
+account: "YOUR_SNOWFLAKE_ACCOUNT"
+warehouse: "COMPUTE_WH"
+database: "CRYPTO_DB"
+schema: "PUBLIC"
+table: "CRYPTO_PRICES"
