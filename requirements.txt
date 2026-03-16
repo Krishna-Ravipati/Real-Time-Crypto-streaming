@@ -1,0 +1,6 @@
+kafka-python
+pyspark
+snowflake-connector-python
+pandas
+requests
+pyyaml
