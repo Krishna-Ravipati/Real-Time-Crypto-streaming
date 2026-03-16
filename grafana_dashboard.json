@@ -1,0 +1,75 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "crypto_dashboard",
+    "title": "Real-Time Crypto Dashboard",
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Bitcoin (BTC/USD) Price Trend",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "refId": "A",
+            "format": "time_series",
+            "datasource": "Snowflake",
+            "rawSql": "SELECT CURRENT_TIMESTAMP() AS time, btc_usd AS value FROM CRYPTO_PRICES ORDER BY time DESC LIMIT 1000;",
+            "interval": ""
+          }
+        ],
+        "lines": true,
+        "linewidth": 2,
+        "legend": { "show": true },
+        "xaxis": { "mode": "time" },
+        "yaxes": [
+          { "format": "currencyUSD", "label": "BTC/USD", "min": null, "max": null },
+          { "format": "short", "min": null, "max": null }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Ethereum (ETH/USD) Price Trend",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "refId": "B",
+            "format": "time_series",
+            "datasource": "Snowflake",
+            "rawSql": "SELECT CURRENT_TIMESTAMP() AS time, eth_usd AS value FROM CRYPTO_PRICES ORDER BY time DESC LIMIT 1000;",
+            "interval": ""
+          }
+        ],
+        "lines": true,
+        "linewidth": 2,
+        "legend": { "show": true },
+        "xaxis": { "mode": "time" },
+        "yaxes": [
+          { "format": "currencyUSD", "label": "ETH/USD", "min": null, "max": null },
+          { "format": "short", "min": null, "max": null }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Latest Crypto Prices",
+        "gridPos": { "x": 0, "y": 8, "w": 24, "h": 6 },
+        "targets": [
+          {
+            "refId": "C",
+            "format": "table",
+            "datasource": "Snowflake",
+            "rawSql": "SELECT CURRENT_TIMESTAMP() AS time, btc_usd, eth_usd FROM CRYPTO_PRICES ORDER BY time DESC LIMIT 10;"
+          }
+        ],
+        "columns": [
+          { "text": "Time", "value": "time" },
+          { "text": "BTC/USD", "value": "btc_usd" },
+          { "text": "ETH/USD", "value": "eth_usd" }
+        ]
+      }
+    ],
+    "schemaVersion": 36,
+    "version": 1,
+    "refresh": "5s"
+  }
+}
